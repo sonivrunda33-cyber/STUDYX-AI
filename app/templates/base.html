@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en" data-theme="{{ theme_mode|default('light') }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f8fc">
+  <meta name="description" content="StudyX AI — a thoughtfully designed student productivity workspace.">
+  <link rel="manifest" href="{{ url_for('static', filename='manifest.webmanifest') }}">
+  <link rel="icon" href="{{ url_for('static', filename='img/studyx-mark.svg') }}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <title>{% block title %}StudyX AI{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/studyx.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/studyx-layout.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/studyx-pages.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/studyx-components.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/studyx-progress.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/studyx-mobile.css') }}?v=20261122calendar-task1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/studyx-fixes.css') }}?v=20261122calendar-task1">
+</head>
+<body class="{% block body_class %}{% endblock %}" data-theme="{{ theme_mode|default('light') }}">
+  <div class="background-grid" aria-hidden="true"></div>
+  <div class="background-glow glow-a" aria-hidden="true"></div>
+  <div class="background-glow glow-b" aria-hidden="true"></div>
+  <div class="page-loader" id="pageLoader" aria-hidden="true"><span class="loader-logo"><img src="{{ url_for('static', filename='img/studyx-mark.svg') }}" alt=""></span><b>STUDYX AI</b><i></i></div>
+  {% block body %}{% endblock %}
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+  <script src="{{ url_for('static', filename='js/studyx.js') }}?v=20261122calendar-task1" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

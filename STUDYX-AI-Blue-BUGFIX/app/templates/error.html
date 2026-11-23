@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} · StudyX AI{% endblock %}
+{% block body %}
+<main class="error-screen"><img src="{{ url_for('static', filename='img/studyx-mark.svg') }}" alt=""><span class="eyebrow">A SMALL DETOUR</span><h1>{{ title }}</h1><p>{{ message }}</p><a class="button button-blue" href="{{ url_for('pages.workspace_dashboard') if session.get('user_id') else url_for('pages.public_landing') }}">Back to StudyX ↗</a></main>
+{% endblock %}

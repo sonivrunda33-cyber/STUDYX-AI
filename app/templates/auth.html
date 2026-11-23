@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Create your account' if mode == 'register' else 'Welcome back' }} · StudyX AI{% endblock %}
+{% block body_class %}auth-page{% endblock %}
+{% block body %}
+<a class="auth-brand" href="{{ url_for('pages.public_landing') }}"><img src="{{ url_for('static', filename='img/studyx-mark.svg') }}" alt=""><b>studyx<span> ai</span></b></a>
+<main class="auth-layout">
+  <section class="auth-story">
+    <div class="auth-story-orbit orbit-a"></div><div class="auth-story-orbit orbit-b"></div>
+    <div class="auth-story-copy"><span class="eyebrow">{{ 'A CLEARER WAY TO GET STARTED' if mode == 'register' else 'YOUR STUDY SPACE IS HERE' }}</span><h1>Make a little<br>room for <em>you.</em></h1><p>Build a study rhythm that feels calm, thoughtful and yours.</p></div>
+    <div class="auth-mini-card" data-tilt><span class="mini-mark">✦</span><div><small>ONE THING AT A TIME</small><b>Your next step is enough.</b></div><span class="mini-check">✓</span></div>
+    <div class="auth-story-foot">STUDY WITH A LITTLE MORE CLARITY <i>✳</i> 01 / 04</div>
+  </section>
+  <section class="auth-form-side">
+    <form class="auth-card" method="post" action="{{ url_for('auth.register') if mode == 'register' else url_for('auth.login') }}" data-loading-form>
+      <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+      {% if mode == 'login' %}<input type="hidden" name="next" value="{{ next_path }}">{% endif %}
+      <span class="eyebrow">{{ 'A FRESH START, WHEN YOU ARE READY' if mode == 'register' else 'WELCOME BACK' }}</span>
+      <h2>{{ 'Create your account' if mode == 'register' else 'Sign in to StudyX' }}</h2>
+      <p>{{ 'Your own study space is a few details away.' if mode == 'register' else 'Pick up right where you left off.' }}</p>
+      {% if error %}<div class="form-error" role="alert"><span>!</span>{{ error }}</div>{% endif %}
+      {% if mode == 'register' %}<label class="form-field"><span>Your name</span><input name="full_name" autocomplete="name" maxlength="100" minlength="2" required placeholder="e.g. Sam Patel" value="{{ values.full_name if values else '' }}"></label>{% endif %}
+      <label class="form-field"><span>Email address</span><input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@college.edu" value="{{ email_value if email_value is defined else (values.email if values else '') }}"></label>
+      <label class="form-field"><span>Password</span><span class="password-field"><input name="password" type="password" autocomplete="{{ 'new-password' if mode == 'register' else 'current-password' }}" minlength="{{ 10 if mode == 'register' else 1 }}" maxlength="128" required placeholder="{{ 'At least 10 characters' if mode == 'register' else 'Enter your password' }}"><button type="button" data-show-password aria-label="Show password">Show</button></span></label>
+      {% if mode == 'register' %}<label class="form-field"><span>Confirm password</span><input name="confirm_password" type="password" autocomplete="new-password" minlength="10" maxlength="128" required placeholder="Enter your password again"></label>{% else %}<div class="auth-options"><a href="{{ url_for('auth.forgot_password') }}">Forgot password?</a><span>Protected with a secure session</span></div>{% endif %}
+      <button class="button button-blue auth-submit" type="submit"><span>{{ 'Create my study space' if mode == 'register' else 'Continue to your space' }}</span><b>↗</b></button>
+      <div class="auth-switch"><span>{{ 'Already have a space?' if mode == 'register' else 'New to StudyX?' }}</span><a href="{{ url_for('auth.login') if mode == 'register' else url_for('auth.register') }}">{{ 'Sign in' if mode == 'register' else 'Create an account' }} <i>→</i></a></div>
+    </form>
+    <a class="back-home" href="{{ url_for('pages.public_landing') }}">← Back to StudyX AI</a>
+  </section>
+</main>
+{% endblock %}

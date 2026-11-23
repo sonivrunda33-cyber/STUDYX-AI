@@ -1,0 +1,25 @@
+<section class="welcome-row">
+  <div><span class="eyebrow" id="todayGreeting">YOUR SPACE TO FIND YOUR RHYTHM</span><h1>Good day, <em>{{ student_name.split(' ')[0] }}.</em></h1><p>A little structure can make room for good things.</p></div>
+  <div class="welcome-actions"><a class="button button-soft" href="{{ url_for('pages.workspace_calendar') }}">Open calendar <span>↗</span></a><button class="button button-blue" data-global-create>＋ Make a plan</button></div>
+</section>
+<section class="dash-hero">
+  <div class="dash-hero-copy"><span class="eyebrow">YOUR WEEK, TAKING SHAPE</span><h2>Small steps.<br><em>Real momentum.</em></h2><p>Your saved sessions, deadlines and course work come together in one calm place.</p><a href="{{ url_for('pages.workspace_focus') }}" class="hero-focus-link"><span>◷</span> Start a focus block <i>→</i></a></div>
+  <div class="dash-3d-scene" data-tilt aria-label="Decorative study progress visualization"><div class="scene-disc"></div><div class="scene-ring ring-1"></div><div class="scene-ring ring-2"></div><div class="scene-ring ring-3"></div><div class="scene-core"><img src="{{ url_for('static', filename='img/studyx-mark.svg') }}" alt=""><span>FOCUS<br>FORWARD</span></div><div class="scene-float tile-one"><small>THIS WEEK</small><b id="heroWeekTime">0m</b><span>saved study time</span></div><div class="scene-float tile-two"><span class="tile-check">✓</span><b id="heroTaskProgress">0/0</b><small>tasks completed</small></div><i class="scene-star star-a">✦</i><i class="scene-star star-b">✧</i></div>
+</section>
+<section class="metric-grid">
+  <article class="metric-card" data-tilt><div class="metric-head"><span>Focus this week</span><i class="metric-icon icon-blue">◷</i></div><b class="metric-value" id="metricWeek">—</b><small id="metricWeekFoot">From saved study sessions</small><span class="metric-glow"></span></article>
+  <article class="metric-card" data-tilt><div class="metric-head"><span>Assignments done</span><i class="metric-icon icon-cyan">✓</i></div><b class="metric-value" id="metricAssignments">—</b><small id="metricAssignmentFoot">No saved assignments yet</small><span class="metric-glow cyan-glow"></span></article>
+  <article class="metric-card" data-tilt><div class="metric-head"><span>Study sessions</span><i class="metric-icon icon-violet">⌁</i></div><b class="metric-value" id="metricSessions">—</b><small id="metricStreak">Your saved focus history</small><span class="metric-glow violet-glow"></span></article>
+  <article class="metric-card" data-tilt><div class="metric-head"><span>Next exam</span><i class="metric-icon icon-amber">⌑</i></div><b class="metric-value metric-exam" id="metricExam">—</b><small id="metricExamFoot">Add a date when you know it</small><span class="metric-glow amber-glow"></span></article>
+</section>
+<section class="dashboard-columns">
+  <div class="dash-main-column">
+    <article class="surface-card chart-card"><div class="section-heading"><div><span class="eyebrow">A LITTLE AT A TIME</span><h2>Your study rhythm</h2><p>Time you saved for learning this week.</p></div><a href="{{ url_for('pages.workspace_progress') }}">See progress <span>↗</span></a></div><div class="week-chart" id="dashboardChart"></div></article>
+    <article class="surface-card upcoming-card"><div class="section-heading"><div><span class="eyebrow">KEEP IT IN SIGHT</span><h2>Coming up</h2><p>A few things that may need your attention.</p></div><a href="{{ url_for('pages.workspace_assignments') }}">All assignments <span>↗</span></a></div><div class="upcoming-list" id="dashboardUpcoming"><div class="loading-shimmer"></div></div></article>
+  </div>
+  <div class="dash-side-column">
+    <article class="surface-card mini-calendar-card"><div class="section-heading"><div><span class="eyebrow">YOUR WEEK, SOFTLY</span><h2>On the calendar</h2></div><a href="{{ url_for('pages.workspace_calendar') }}">Open ↗</a></div><div id="dashboardMiniCalendar" class="mini-calendar"></div><div class="mini-event-list" id="dashboardEvents"></div></article>
+    <article class="goal-nudge"><div class="nudge-orbit">✳</div><span class="eyebrow">A PLAN THAT FITS YOUR DAY</span><h3>Build a smart timetable.</h3><p>Shape study blocks around the assignments and exams you have saved.</p><a href="{{ url_for('pages.workspace_timetable') }}">Plan my study time <span>→</span></a></article>
+    <article class="tutor-nudge"><div><i>↗</i><span><b>See your progress.</b><small>Track the study time you have actually saved.</small></span></div><a href="{{ url_for('pages.workspace_progress') }}">Open progress ↗</a></article>
+  </div>
+</section>

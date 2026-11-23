@@ -1,0 +1,40 @@
+/* StudyX focused bug fixes; original UI/design is unchanged. */
+/* Lock branding dimensions so a switch of page/theme cannot resize the logo. */
+.sidebar .sidebar-logo {display:flex;flex:none;align-items:center;gap:9px;height:33px;min-height:33px;max-height:33px;padding:0 10px;margin-bottom:23px;line-height:1;transform:none;}
+.sidebar .sidebar-logo img {display:block;width:29px!important;height:29px!important;min-width:29px;max-width:29px;min-height:29px;max-height:29px;flex:0 0 29px;object-fit:contain;animation:none!important;transition:none!important;}
+.sidebar .sidebar-logo>b {font-size:16px!important;line-height:1.1!important;white-space:nowrap;transform:none;animation:none!important;transition:none!important;}
+.logo-lockup img {aspect-ratio:1;object-fit:contain;flex-shrink:0;}
+/* Accessible task checkbox, reliably visible and clickable on phones and laptops. */
+.task-toggle { position: relative; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; min-width: 28px; flex: 0 0 28px; cursor: pointer; }
+.task-toggle input.task-check[type="checkbox"] { position: absolute; z-index: 1; inset: 0; width: 100%!important; height: 100%!important; min-width: 0; min-height: 0; margin: 0; opacity: 0; cursor: pointer; }
+.task-toggle .task-box { display: grid; place-items: center; pointer-events: none; width: 24px; height: 24px; border: 2px solid var(--line-strong); border-radius: 7px; background: var(--panel); transition: background .15s, border-color .15s; }
+.task-toggle .task-box svg { display: block; width: 17px; height: 17px; fill: none; stroke: #fff; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; opacity: 0; transform: scale(.7); transition: opacity .15s, transform .15s; }
+.task-toggle input.task-check:checked + .task-box { background: var(--mint); border-color: var(--mint); }
+.task-toggle input.task-check:checked + .task-box svg { opacity: 1; transform: scale(1); }
+.task-toggle input.task-check:focus-visible + .task-box { outline: 3px solid var(--blue); outline-offset: 2px; }
+.task-toggle input.task-check:disabled + .task-box { opacity: .65; }
+.task-toggle:has(input:disabled) { cursor: wait; }
+@media (pointer: coarse) { .task-toggle { width: 40px; height: 40px; min-width: 40px; flex-basis: 40px; } }
+/* Course progress is part of the existing section, not a layout redesign. */
+.course-progress-details { grid-column: 1/-1; font-size: 9px; color: var(--muted); line-height: 1.55; }
+.contact-honeypot {position:absolute!important;width:1px!important;height:1px!important;opacity:0;pointer-events:none;left:-9999px;}
+.contact-status {font-size:12px;line-height:1.55;min-height:1.5em;color:var(--muted);}
+.contact-status.success {color:var(--mint);}.contact-status.error {color:var(--red);}
+.logout-form {display:block;margin:0;}.logout-link,.side-extra-link {display:block;width:100%;text-align:left;padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:var(--panel-soft);color:var(--text);font-weight:700;font-size:11px;text-decoration:none;cursor:pointer;}
+.logout-link:hover,.side-extra-link:hover {border-color:var(--blue);color:var(--blue);}
+.top-logout .logout-link {white-space:nowrap;padding:9px 11px;font-size:10px;}
+.sidebar-bottom {gap:8px;}
+.quiz-actions {display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:14px;}
+.quiz-course-filter {min-width:190px;}.quiz-take-panel {display:none;padding:20px;margin-top:20px;}.quiz-take-panel.is-open {display:block;}
+.quiz-question-builder {display:grid;gap:12px;margin:12px 0;padding:18px;border:1px solid var(--line);border-radius:13px;background:var(--panel-soft);}
+.quiz-question {border:1px solid var(--line);border-radius:10px;padding:14px;margin:10px 0;}.quiz-question legend {font-weight:700;font-size:12px;}.quiz-question label {display:flex;align-items:center;gap:9px;padding:7px 2px;font-size:12px;}
+.quiz-result {display:flex;align-items:center;gap:12px;margin-top:14px;padding:12px;border-radius:10px;background:var(--blue-pale);}.quiz-result b {font-size:20px;color:var(--blue);}
+.contact-inbox-card {padding:15px;}.contact-inbox-card p {white-space:pre-wrap;overflow-wrap:anywhere;}
+@media(max-width:680px){.top-logout .logout-link {font-size:10px;padding:8px;}.quiz-grid {grid-template-columns:minmax(0,1fr);}.quiz-course-filter {min-width:150px;}.list-toolbar {flex-wrap:wrap;}}
+
+/* Lock dashboard ornament logo too; avoids visual jumps while changing pages. */
+.scene-core img {width:31px!important;height:31px!important;min-width:31px;max-width:31px;object-fit:contain;animation:none!important;}
+.page-loader .loader-logo img {width:44px;height:44px;object-fit:contain;}
+@media(max-width:680px){.top-logout{display:none;}}
+/* Completed assignment state is consistent in the calendar agenda and day list. */
+.data-row.is-done .row-copy b, .agenda-row.is-done .row-copy b { color: var(--muted); text-decoration: line-through; }

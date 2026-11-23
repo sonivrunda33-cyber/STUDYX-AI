@@ -1,0 +1,1 @@
+"""StudyX application route blueprints."""

@@ -1,0 +1,13 @@
+<section class="page-heading"><div><span class="eyebrow">PRACTICE WHAT YOU LEARN</span><h1>Course quizzes.</h1><p>Build quizzes for your saved courses, answer them, and keep your scores with your account.</p></div><button class="button button-blue" data-toggle-panel="quizFormPanel">＋ Create quiz</button></section>
+<section class="surface-card form-panel hidden-panel" id="quizFormPanel">
+  <div class="section-heading"><div><span class="eyebrow">YOUR QUESTIONS</span><h2>Build a course quiz</h2></div></div>
+  <form id="quizForm" class="form-stack">
+    <label class="form-field"><span>Quiz title</span><input name="title" required maxlength="180" placeholder="e.g. Chapter 1 revision"></label>
+    <label class="form-field"><span>Linked course</span><select name="subject_id" data-subject-options required><option value="">Choose your course</option></select></label>
+    <div id="quizQuestionBuilder" class="form-stack"></div>
+    <div class="quiz-actions"><button id="addQuizQuestion" class="button button-soft" type="button">＋ Add question</button><button class="button button-blue" type="submit">Save quiz ↗</button></div>
+  </form>
+</section>
+<div class="list-toolbar"><label class="form-field quiz-course-filter"><span>Filter by course</span><select id="quizCourseFilter"><option value="">All courses</option></select></label><span id="quizCount"></span></div>
+<section id="quizList" class="quiz-grid"><div class="loading-shimmer"></div></section>
+<section id="quizTakePanel" class="surface-card quiz-take-panel" aria-live="polite"></section>

@@ -1,0 +1,167 @@
+/* StudyX AI — responsive enhancement. Loaded LAST to preserve desktop styling.
+   Breakpoints: tablet 980px; mobile 680px; small phone 390px. */
+
+/* Images, grids and text should never force the viewport wider. */
+html { overflow-x: clip; }
+img, svg { max-width: 100%; }
+.landing-hero > *, .landing-feature-grid > *, .workspace-content > *,
+.dashboard-columns > *, .metric-grid > *, .auth-layout > * { min-width: 0; }
+
+@media (max-width: 980px) {
+  .wrap { width: min(100% - 44px, 760px); }
+
+  /* Public landing page: preserve two-column feel only where it fits. */
+  .landing-nav { height: 72px; gap: 15px; }
+  .landing-links, .landing-actions { gap: 14px; }
+  .landing-hero { grid-template-columns: 1fr 1fr; gap: 10px; min-height: 550px; padding: 45px 0; }
+  .hero-copy h1 { font-size: clamp(40px, 5.7vw, 64px); letter-spacing: -2.9px; }
+  .hero-visual { min-height: 460px; overflow: clip; }
+  .hero-side-label { display: none; }
+  .hero-dash-card { width: min(430px, 95%); }
+  .visual-halo, .visual-orbit { width: min(400px, 95%); height: auto; aspect-ratio: 1; }
+  .landing-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .feature-intro { padding: 12px 10px 22px 0; }
+  .landing-feature-card { min-height: 210px; }
+
+  /* The signed-in app already has a menu button and mobile bottom navigation. */
+  .sidebar { transform: translateX(-105%); transition: transform .25s ease; width: min(285px, 85vw); }
+  .sidebar.is-open { transform: translateX(0); box-shadow: 15px 0 60px rgba(0,0,0,.25); }
+  .workspace-main { margin-left: 0; }
+  .mobile-menu { display: grid; place-items: center; flex: none; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 11px; background: var(--panel); }
+  .mobile-scrim.is-open { display: block; position: fixed; inset: 0; z-index: 19; background: rgba(0,0,0,.45); }
+  .mobile-bottom-nav { display: flex; position: fixed; z-index: 25; inset: auto 0 0; align-items: stretch; justify-content: space-around; min-height: 64px; padding: 7px max(8px, env(safe-area-inset-right)) calc(7px + env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); border-top: 1px solid var(--line); background: var(--panel); box-shadow: 0 -8px 30px rgba(15,30,60,.08); }
+  .mobile-bottom-nav a { display: grid; align-content: center; justify-items: center; flex: 1; gap: 3px; min-width: 0; color: var(--muted); font-size: 10px; font-weight: 700; }
+  .mobile-bottom-nav a.active { color: var(--blue); }
+  .mobile-bottom-nav svg { width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .workspace-footer { padding-bottom: 75px; }
+  .workspace-content { padding: 26px 24px 110px; }
+  .topbar { padding-inline: 24px; }
+}
+
+@media (max-width: 680px) {
+  body { min-width: 0; }
+  .wrap { width: calc(100% - 36px); max-width: 540px; }
+  .eyebrow { font-size: 10px; letter-spacing: 1.1px; }
+
+  /* Header: usable tap targets, no tiny desktop navigation. */
+  .landing-nav { height: 68px; gap: 9px; }
+  .landing-nav .logo-lockup { flex: 1; min-width: 0; }
+  .landing-nav .logo-lockup img { width: 30px; height: 30px; }
+  .landing-nav .logo-lockup b { font-size: 16px; white-space: nowrap; }
+  .landing-links { display: none; }
+  .landing-actions { gap: 10px; flex: none; }
+  .landing-actions .theme-button { display: none; }
+  .landing-actions .nav-login { font-size: 12px; white-space: nowrap; }
+  .landing-actions .button { min-height: 39px; padding: 0 12px; font-size: 11px; gap: 6px; }
+
+  /* Hero becomes a genuine vertical mobile layout. */
+  .landing-hero { display: grid; grid-template-columns: minmax(0, 1fr); min-height: 0; gap: 20px; padding: 46px 0 34px; }
+  .hero-copy { padding: 0; }
+  .announcement { max-width: 100%; font-size: 9px; padding: 7px 9px; white-space: normal; }
+  .hero-copy h1 { margin: 23px 0 18px; font-size: clamp(43px, 11.5vw, 62px); line-height: 1.04; letter-spacing: -2.7px; overflow-wrap: normal; }
+  .hero-copy > p { max-width: 500px; font-size: 15px; line-height: 1.72; }
+  .hero-actions { gap: 15px; flex-wrap: wrap; margin-top: 25px; }
+  .hero-actions .button { min-height: 47px; font-size: 13px; }
+  .hero-actions .text-link { font-size: 12px; }
+  .hero-proof { margin-top: 25px; font-size: 11px; }
+  .hero-proof .proof-dots i { width: 29px; height: 29px; }
+
+  .hero-visual { width: 100%; min-height: 375px; padding: 13px 0; perspective: none; overflow: visible; }
+  .hero-dash-card { width: min(100%, 430px); transform: none; animation: none; padding: 16px; border-radius: 19px; }
+  .visual-halo { width: 100%; max-width: 410px; }
+  .visual-orbit, .hero-side-label, .float-chip { display: none; }
+  .mock-head { padding-bottom: 12px; }
+  .mock-brand { font-size: 14px; }
+  .mock-brand img { width: 22px; }
+  .mock-greeting h3 { font-size: 23px; line-height: 1.1; }
+  .mock-greeting p { font-size: 11px; }
+  .mock-greeting small { font-size: 9px; }
+  .mock-stat-row b { font-size: 12px; }
+  .mock-stat-row small, .mock-stat-row i { font-size: 9px; }
+  .mock-chart-top b, .mock-task b { font-size: 11px; }
+  .mock-task small, .mock-task > i { font-size: 9px; }
+
+  .trust-strip { display: grid; gap: 12px; padding: 20px 0 25px; font-size: 9px; }
+  .trust-strip > div { gap: 9px; flex-wrap: wrap; }
+  .trust-strip b { font-size: 11px; }
+
+  /* Feature cards become full-width readable cards. */
+  .landing-feature-band { padding: 48px 0 54px; }
+  .landing-feature-grid { grid-template-columns: minmax(0, 1fr); gap: 13px; }
+  .feature-intro { padding: 0 0 15px; }
+  .landing-feature-grid h2, .landing-cta h2 { margin: 12px 0; font-size: clamp(30px, 8vw, 40px); letter-spacing: -1.3px; }
+  .feature-intro > p { max-width: 440px; font-size: 14px; line-height: 1.7; }
+  .feature-intro .text-link { margin-top: 12px; font-size: 12px; }
+  .landing-feature-card { min-height: 0; padding: 22px; }
+  .feature-symbol { margin-bottom: 17px; width: 43px; height: 43px; font-size: 20px; }
+  .landing-feature-card > small { font-size: 10px; }
+  .landing-feature-card h3 { font-size: 19px; margin: 11px 0 7px; }
+  .landing-feature-card p { font-size: 13px; line-height: 1.65; }
+  .landing-cta { display: grid; min-height: 0; gap: 19px; padding-top: 50px; padding-bottom: 52px; }
+  .landing-cta .button { justify-self: start; min-height: 47px; font-size: 13px; }
+  .landing-footer { flex-wrap: wrap; justify-content: flex-start; gap: 14px 20px; padding: 23px 0 26px; font-size: 11px; }
+  .landing-footer > span { width: 100%; order: 3; }
+  .landing-footer > div { margin-left: auto; gap: 13px; }
+  .landing-footer .logo-lockup b { font-size: 16px; }
+
+  /* Signed-in workspace: readable controls and content on phones. */
+  .topbar { height: 62px; padding-inline: 14px; gap: 9px; }
+  .topbar-right { gap: 6px; }
+  .topbar .crumb { min-width: 0; font-size: 12px; gap: 5px; }
+  .topbar .crumb b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .top-create { min-height: 38px; padding-inline: 10px; font-size: 11px; }
+  .top-create span { display: none; }
+  .top-user { width: 32px; height: 32px; }
+  .workspace-content { padding: 21px 15px calc(110px + env(safe-area-inset-bottom)); }
+  .workspace-footer { display: none; }
+  .mobile-bottom-nav { min-height: 66px; }
+  .welcome-row { flex-wrap: wrap; gap: 16px; }
+  .welcome-row h1 { font-size: clamp(28px, 8vw, 40px); }
+  .welcome-row p { font-size: 13px; }
+  .welcome-actions { flex-wrap: wrap; }
+  .metric-grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; }
+  .metric-card { min-width: 0; padding: 14px; }
+  .metric-head > span { font-size: 11px; }
+  .metric-value { font-size: clamp(21px, 6vw, 32px); }
+  .metric-card > small { font-size: 10px; }
+  .dashboard-columns, .dash-hero, .calendar-layout { grid-template-columns: minmax(0,1fr); }
+  .dash-hero { overflow: hidden; }
+  .dash-hero-copy h2 { font-size: clamp(27px, 7vw, 38px); }
+  .dash-3d-scene { max-width: 100%; }
+  .section-heading { flex-wrap: wrap; gap: 9px; }
+  .section-heading h2 { font-size: 20px; }
+  .surface-card { max-width: 100%; }
+
+  /* Forms remain tap-friendly on both mobile browsers. */
+  input, select, textarea { max-width: 100%; }
+  .form-field input, .form-field select, .form-field textarea { min-height: 44px; font-size: 16px; }
+  .auth-form-side { padding: 24px 17px 35px; min-height: auto; }
+  .auth-card { width: 100%; max-width: 460px; padding: 24px 19px; }
+  .auth-card h2 { font-size: 27px; }
+  .auth-card p { font-size: 13px; }
+  .auth-story { min-height: 265px; padding: 82px 22px 23px; }
+  .auth-story-copy h1 { font-size: 40px; letter-spacing: -1.7px; }
+  .auth-story-copy p { font-size: 13px; }
+  .auth-brand { top: 18px; left: 20px; }
+  .auth-mini-card { max-width: 100%; }
+}
+
+@media (max-width: 390px) {
+  .wrap { width: calc(100% - 30px); }
+  .landing-nav .logo-lockup b { font-size: 14px; }
+  .landing-actions { gap: 7px; }
+  .landing-actions .button { padding: 0 10px; font-size: 10px; }
+  .landing-actions .nav-login { font-size: 11px; }
+  .hero-copy h1 { font-size: 42px; letter-spacing: -2.5px; }
+  .hero-actions { align-items: flex-start; flex-direction: column; }
+  .hero-actions .button { width: 100%; }
+  .hero-visual { min-height: 365px; }
+  .hero-dash-card { padding: 13px; }
+  .landing-feature-card { padding: 19px; }
+  .landing-footer > div { width: 100%; margin-left: 0; }
+  .top-user { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar, .hero-dash-card { animation: none; transition-duration: .01ms; }
+}

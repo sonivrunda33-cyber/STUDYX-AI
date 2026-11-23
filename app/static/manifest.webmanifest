@@ -1,0 +1,13 @@
+{
+  "name": "StudyX AI — Student Study Planner",
+  "short_name": "StudyX",
+  "description": "A personal student productivity workspace.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#2468e8",
+  "icons": [
+    { "src": "/static/img/studyx-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
